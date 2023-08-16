@@ -12,35 +12,39 @@ function Home() {
   const [isListening, setIsListenung] = useState(false)
   const [responceData, setResponceData] = useState(null)
 
+  // console.log("isListening", isListening)
+  console.log("inputValue1", inputValue)
 
 
-
-
-
-  const handleStartListening = () => {
+  const handleStartListening = async () => {
     SpeechRecognition.startListening();
     setIsListenung(true)
+   
 
   };
+
+  
   const handleStopListening = () => {
     SpeechRecognition.stopListening();
+    console.log("inputValue inside stop listen", inputValue)
     setIsListenung(false)
-
   };
-
-  useEffect(() => {
-    setInputValue(transcript)
-  }, [transcript])
-
   
 
 
 
 
+  useEffect(() => {
+    setInputValue(transcript);
+  }, [transcript])
+
 
   const url = 'http://localhost:5000/chat'
 
   const onSubmit = () => {
+    console.log("inputValue in side function", inputValue)
+
+    console.log("submit fun call")
     if (!inputValue) {
       console.log("please enter something")
     }
@@ -56,26 +60,30 @@ function Home() {
           console.error('Error:', error);
         });
     }
-
   };
 
+  useEffect(() => {
+    if (!listening && transcript !== '') {
+        // Call the submit function when listening ends and there's a transcript
+        onSubmit();
+        resetTranscript(); // Optional: Clear the transcript if needed
+    }
+  }, [listening, transcript, onSubmit, resetTranscript]);
 
   return (
     <>
-      <div className="relative  w-500 ">
+      <div className="relative w-500 ">
         <img
           src="https://www.eweek.com/wp-content/uploads/2023/06/ew-what-is-ai-as-a-service.png"
           alt="Background"
           className="w-full object-cover"
         />
-
         <div className="absolute inset-0 bg-black opacity-90">
           <div className='flex justify-center mt-8'>
             <div className="max-w-5xl text-center">
               <h2 className="text-5xl  font-bold font-serif text-white p-4 m-5 mt-5 ">
                 A I F T
               </h2>
-
               {
                 responceData === null ? <>
                   <div className='grid grid-cols-3 gap-5 mt-16'>
@@ -107,12 +115,10 @@ function Home() {
                   </h2>
                 </>
                   :
-                  <Responce data={responceData}/>
-
+                <Responce data={responceData} />
               }
-
-              <div 
-              className="flex items-center p-5 mt-10">
+              <div
+                className="flex items-center p-5 mt-10">
                 <label className="sr-only">Search</label>
                 <div className="relative w-full">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -150,7 +156,6 @@ function Home() {
                         </svg>
                       </button>
                   }
-
                 </div>
                 <button
                   type="submit"
@@ -158,18 +163,14 @@ function Home() {
                   onClick={onSubmit}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-16 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-</svg>
-
-
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
     </>
   )
 }

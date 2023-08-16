@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-const apiKey = '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';
+const apiKey = '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';
 
 
 async function sendMessageToChatGPT(message) {
