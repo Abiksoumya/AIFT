@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 
 // Use the cors middleware to allow cross-origin requests from all origins
 app.use(cors());
-app.post('/chat',chatRoutes)
 app.use(chatRoutes);
 
 
