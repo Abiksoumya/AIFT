@@ -19,17 +19,17 @@ function Home() {
   const handleStartListening = async () => {
     SpeechRecognition.startListening();
     setIsListenung(true)
-   
+
 
   };
 
-  
+
   const handleStopListening = () => {
     SpeechRecognition.stopListening();
     console.log("inputValue inside stop listen", inputValue)
     setIsListenung(false)
   };
-  
+
 
 
 
@@ -64,9 +64,9 @@ function Home() {
 
   useEffect(() => {
     if (!listening && transcript !== '') {
-        // Call the submit function when listening ends and there's a transcript
-        onSubmit();
-        resetTranscript(); // Optional: Clear the transcript if needed
+      // Call the submit function when listening ends and there's a transcript
+      onSubmit();
+      resetTranscript(); // Optional: Clear the transcript if needed
     }
   }, [listening, transcript, onSubmit, resetTranscript]);
 
@@ -86,36 +86,36 @@ function Home() {
               </h2>
               {
                 responceData === null ? <>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-16">
-  <div className="p-4 bg-white rounded-lg">
-    <h2 className="text-2xl text-gray-800">Examples 1</h2>
-    <p className="mt-2 text-gray-600">Explain quantum computing in simple terms.</p>
-  </div>
-  <div className="p-4 bg-white rounded-lg">
-    <h2 className="text-2xl text-gray-800">Capabilities</h2>
-    <p className="mt-2 text-gray-600">Remembers what user said earlier in the conversation.</p>
-  </div>
-  <div className="p-4 bg-white rounded-lg">
-    <h2 className="text-2xl text-gray-800">Limitations</h2>
-    <p className="mt-2 text-gray-600">May occasionally generate incorrect information.</p>
-  </div>
-  <div className="p-4 bg-white rounded-lg">
-    <p className="mt-2 text-gray-600">How do I make an HTTP request in Javascript?.</p>
-  </div>
-  <div className="p-4 bg-white rounded-lg">
-    <p className="mt-2 text-gray-600">This is a sample card description. You can replace this with your content.</p>
-  </div>
-  <div className="p-4 bg-white rounded-lg">
-    <p className="mt-2 text-gray-600">This is a sample card description. You can replace this with your content.</p>
-  </div>
-</div>
-<h2 className="text-2xl font-serif text-white p-4 m-5 mt-8 md:mt-16">
-  Whether you're on the verge of launching your practical AI application or exploring groundbreaking AI technologies, our logo maker will help supercharge your brand. Find inspiration and craft the perfect, professional logo to represent your AI business—in just a few clicks.
-</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-16">
+                    <div className="p-4 bg-white rounded-lg">
+                      <h2 className="text-2xl text-gray-800">Examples 1</h2>
+                      <p className="mt-2 text-gray-600">Explain quantum computing in simple terms.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg">
+                      <h2 className="text-2xl text-gray-800">Capabilities</h2>
+                      <p className="mt-2 text-gray-600">Remembers what user said earlier in the conversation.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg">
+                      <h2 className="text-2xl text-gray-800">Limitations</h2>
+                      <p className="mt-2 text-gray-600">May occasionally generate incorrect information.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg">
+                      <p className="mt-2 text-gray-600">How do I make an HTTP request in Javascript?.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg">
+                      <p className="mt-2 text-gray-600">This is a sample card description. You can replace this with your content.</p>
+                    </div>
+                    <div className="p-4 bg-white rounded-lg">
+                      <p className="mt-2 text-gray-600">This is a sample card description. You can replace this with your content.</p>
+                    </div>
+                  </div>
+                  <h2 className="text-2xl font-serif text-white p-4 m-5 mt-8 md:mt-16">
+                    Whether you're on the verge of launching your practical AI application or exploring groundbreaking AI technologies, our logo maker will help supercharge your brand. Find inspiration and craft the perfect, professional logo to represent your AI business—in just a few clicks.
+                  </h2>
 
                 </>
                   :
-                <Responce data={responceData} />
+                  <Responce data={responceData} />
               }
               <div
                 className="flex items-center p-5 mt-10">
@@ -175,4 +175,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Home;
