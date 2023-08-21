@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-const apiKey = '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';
+const apiKey = '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';
 
 
 async function sendMessageToChatGPT(message) {
@@ -34,7 +34,8 @@ async function sendMessageToChatGPT(message) {
             return response.data.choices[0].message.content;
     }
     catch(error){
-      const customError = new Error('An error occurred while processing the request.');
+      console.log(error)
+      const customError = new Error('An error occurred while processing the request',error);
       customError.statusCode = 500; // Set the desired status code here
       throw customError;
 

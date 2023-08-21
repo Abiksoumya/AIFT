@@ -9,8 +9,9 @@ router.post('/chat', async (req, res) => {
       const response = await chatController.sendMessageToChatGPT(message);
       res.json({ response });
     } catch (error) {
+      // console.log(error)
       const statusCode = error.statusCode || 500; // Default to 500 if no statusCode is provided
-      res.status(statusCode).json({ error: 'An error occurred while processing the request.' });
+      res.status(statusCode).json({ error: 'An error occurred while processing the request.the router' });
   }
   });
   
